@@ -1,0 +1,44 @@
+[project]
+name = "podpack-qrcode"
+version = "0.2.0"
+description = "QR code generation for podpack sites"
+readme = "README.md"
+requires-python = ">=3.12"
+dependencies = [
+    "flask>=3.0",
+    "flask-wtf>=1.2.1",
+    "qrcode[pil]>=7.4.2",
+]
+
+[[project.authors]]
+name = "Steve Holden"
+email = "steve@holdenweb.com"
+
+[build-system]
+requires = ["uv_build>=0.8.4,<0.9.0"]
+build-backend = "uv_build"
+
+# podpack is deliberately absent from `dependencies`: a real dependency's
+# [tool.uv.sources] entry travels with the distribution, so a site whose own
+# podpack source differs could never lock. A dependency group is dev-only
+# metadata and constrains nobody. See writing-an-app.md rule 1.
+[dependency-groups]
+dev = [
+    "podpack",
+    "pytest>=8.0",
+    "mypy>=1.11",
+    "types-qrcode>=8.2.0.20260518",
+    "types-wtforms>=3.2.1.20260518",
+]
+
+[tool.uv.sources]
+podpack = { path = "/Users/sholden/sites/podpack", editable = true }
+
+[tool.mypy]
+files = ["src", "tests"]
+
+# flask-wtf ships neither stubs nor a py.typed marker, and no types-* package
+# exists for it. Suppressed for that one module rather than globally.
+[[tool.mypy.overrides]]
+module = "flask_wtf.*"
+ignore_missing_imports = true
