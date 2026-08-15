@@ -585,7 +585,7 @@ wheels = [
 
 [[package]]
 name = "podpack"
-version = "0.2.2"
+version = "0.4.3"
 source = { editable = "/Users/sholden/sites/podpack" }
 dependencies = [
     { name = "alembic" },
@@ -602,7 +602,9 @@ requires-dist = [
     { name = "flask-sqlalchemy", specifier = ">=3.1.1" },
     { name = "gunicorn", specifier = ">=22.0" },
     { name = "psycopg2-binary", specifier = ">=2.9.10" },
+    { name = "pymongo", marker = "extra == 'mongodb'", specifier = ">=4.8" },
 ]
+provides-extras = ["mongodb"]
 
 [package.metadata.requires-dev]
 dev = [
@@ -612,7 +614,7 @@ dev = [
 
 [[package]]
 name = "podpack-qrcode"
-version = "0.2.0"
+version = "0.2.1"
 source = { editable = "." }
 dependencies = [
     { name = "flask" },
