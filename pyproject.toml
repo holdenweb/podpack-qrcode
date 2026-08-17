@@ -32,7 +32,11 @@ dev = [
 ]
 
 [tool.uv.sources]
-podpack = { path = "/Users/sholden/sites/podpack", editable = true }
+# The published repository, not a path. An editable pointer at
+# /Users/sholden/sites/podpack resolved on exactly one machine, put an absolute
+# home directory into a committed lockfile, and made this package unlockable
+# anywhere else. podpack is on GitHub, so a git source needs no checkout at all.
+podpack = { git = "https://github.com/holdenweb/podpack.git" }
 
 [tool.mypy]
 files = ["src", "tests"]

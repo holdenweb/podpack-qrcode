@@ -797,7 +797,7 @@ wheels = [
 [[package]]
 name = "podpack"
 version = "0.6.1"
-source = { editable = "/Users/sholden/sites/podpack" }
+source = { git = "https://github.com/holdenweb/podpack.git#a98a9ce6a5736c3515f8063dfcc7a197de345928" }
 dependencies = [
     { name = "alembic" },
     { name = "argon2-cffi" },
@@ -806,25 +806,6 @@ dependencies = [
     { name = "flask-sqlalchemy" },
     { name = "gunicorn" },
     { name = "psycopg2-binary" },
-]
-
-[package.metadata]
-requires-dist = [
-    { name = "alembic", specifier = ">=1.13" },
-    { name = "argon2-cffi", specifier = ">=25.1.0" },
-    { name = "flask", specifier = ">=3.0" },
-    { name = "flask-security-too", specifier = ">=5.6.2" },
-    { name = "flask-sqlalchemy", specifier = ">=3.1.1" },
-    { name = "gunicorn", specifier = ">=22.0" },
-    { name = "psycopg2-binary", specifier = ">=2.9.10" },
-    { name = "pymongo", marker = "extra == 'mongodb'", specifier = ">=4.8" },
-]
-provides-extras = ["mongodb"]
-
-[package.metadata.requires-dev]
-dev = [
-    { name = "mypy", specifier = ">=1.11" },
-    { name = "pytest", specifier = ">=8.0" },
 ]
 
 [[package]]
@@ -856,7 +837,7 @@ requires-dist = [
 [package.metadata.requires-dev]
 dev = [
     { name = "mypy", specifier = ">=1.11" },
-    { name = "podpack", editable = "/Users/sholden/sites/podpack" },
+    { name = "podpack", git = "https://github.com/holdenweb/podpack.git" },
     { name = "pytest", specifier = ">=8.0" },
     { name = "types-qrcode", specifier = ">=8.2.0.20260518" },
     { name = "types-wtforms", specifier = ">=3.2.1.20260518" },
