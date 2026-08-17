@@ -20,6 +20,11 @@ HOST_CONFIG: dict[str, Any] = {
 def site(monkeypatch: pytest.MonkeyPatch, tmp_path: Path) -> SiteFactory:
     monkeypatch.setenv("SECRET_KEY", "test-secret-key")
     monkeypatch.setenv("SQLALCHEMY_DATABASE_URI", "sqlite:///:memory:")
+    # Required since podpack 0.5.2, when login became core: flask-security
+    # keys its password hashes on this and podpack refuses to boot without
+    # it. This app has no login of its own and needs it anyway, because
+    # every podpack site has one.
+    monkeypatch.setenv("SECURITY_PASSWORD_SALT", "test-password-salt")
 
     def _build(**overrides: Any) -> Flask:
         config = {**HOST_CONFIG, **overrides.pop("host_config", {})}
