@@ -810,7 +810,7 @@ dependencies = [
 
 [[package]]
 name = "podpack-qrcode"
-version = "0.2.2+dev"
+version = "0.2.3"
 source = { editable = "." }
 dependencies = [
     { name = "flask" },
